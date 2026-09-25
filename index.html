@@ -6,85 +6,99 @@
 <title>Find Your Table</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FBF8F2;
-    --surface: #FFFFFF;
-    --ink: #2B2A26;
-    --ink-soft: #6B6559;
-    --green: #3F5B45;
-    --green-deep: #2C4232;
-    --gold: #B4915A;
-    --line: #E7E0D2;
+    --maroon-1: #6E1526;
+    --maroon-2: #3A0B15;
+    --plaque: #FBF3DD;
+    --ink: #3A0E16;
+    --ink-soft: #7A4B52;
+    --cream: #F3E4BE;
+    --cream-soft: #D8BE93;
+    --gold: #D8B268;
+    --gold-deep: #B8863C;
+    --line: rgba(216, 178, 104, 0.4);
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #201F1B;
-      --surface: #2A2924;
-      --ink: #F3EFE6;
-      --ink-soft: #B7AF9E;
-      --green: #7FA089;
-      --green-deep: #9CBBA4;
-      --gold: #D3B788;
-      --line: #3B392F;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #201F1B;
-    --surface: #2A2924;
-    --ink: #F3EFE6;
-    --ink-soft: #B7AF9E;
-    --green: #7FA089;
-    --green-deep: #9CBBA4;
-    --gold: #D3B788;
-    --line: #3B392F;
   }
   * { box-sizing: border-box; }
   html { scroll-padding-top: env(safe-area-inset-top, 0px); }
   html, body { height: 100%; }
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--ink);
+    background: radial-gradient(circle at 50% 15%, var(--maroon-1) 0%, var(--maroon-2) 65%, #260610 100%);
+    color: var(--cream);
     font-family: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 32px 20px;
+    padding: 28px 16px;
     min-height: 100%;
   }
-  .card {
+  .frame {
     width: 100%;
     max-width: 440px;
+    border: 1.5px solid var(--gold);
+    border-radius: 28px 28px 18px 18px;
+    padding: 3px;
+  }
+  .frame-inner {
+    border: 1px solid rgba(216,178,104,0.55);
+    border-radius: 24px 24px 15px 15px;
+    padding: 40px 26px 34px;
   }
   .mark {
     text-align: center;
-    font-family: "Fraunces", Georgia, serif;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 0.04em;
+    font-size: 20px;
     color: var(--gold);
-    margin-bottom: 6px;
+    margin-bottom: 16px;
+  }
+  .welcome {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(17px, 4.6vw, 19px);
+    line-height: 1.45;
+    text-align: center;
+    margin: 0 0 6px;
+    color: var(--cream);
+    max-width: 28ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .names {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(30px, 9vw, 40px);
+    line-height: 1.1;
+    text-align: center;
+    margin: 10px 0 18px;
+    color: var(--gold);
+  }
+  .rule {
+    width: 36px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 22px;
+    opacity: 0.8;
   }
   h1 {
     font-family: "Fraunces", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(30px, 8vw, 40px);
+    font-size: clamp(22px, 6vw, 27px);
     line-height: 1.15;
     text-align: center;
     margin: 0 0 10px;
-    color: var(--ink);
+    color: var(--cream);
   }
   .sub {
     text-align: center;
-    color: var(--ink-soft);
-    font-size: 15.5px;
+    color: var(--cream-soft);
+    font-size: 15px;
     line-height: 1.5;
-    margin: 0 0 32px;
+    margin: 0 0 28px;
     max-width: 34ch;
     margin-left: auto;
     margin-right: auto;
@@ -95,14 +109,14 @@
     font-family: "Work Sans", sans-serif;
     font-size: 17px;
     padding: 16px 18px;
-    border-radius: 12px;
-    border: 1.5px solid var(--line);
-    background: var(--surface);
+    border-radius: 10px;
+    border: 1.5px solid var(--gold-deep);
+    background: var(--plaque);
     color: var(--ink);
     outline: none;
     transition: border-color 0.15s ease;
   }
-  input[type="text"]:focus { border-color: var(--green); }
+  input[type="text"]:focus { border-color: var(--gold); }
   input[type="text"]::placeholder { color: var(--ink-soft); }
 
   .results {
@@ -116,41 +130,36 @@
     font-family: "Work Sans", sans-serif;
     font-size: 16px;
     color: var(--ink);
-    background: var(--surface);
-    border: 1.5px solid var(--line);
-    border-radius: 12px;
+    background: var(--plaque);
+    border: 1.5px solid var(--gold-deep);
+    border-radius: 10px;
     padding: 14px 16px;
     cursor: pointer;
     transition: border-color 0.15s ease, transform 0.1s ease;
   }
-  .result-btn:hover { border-color: var(--green); }
+  .result-btn:hover { border-color: var(--maroon-1); }
   .result-btn:active { transform: scale(0.99); }
-  .result-btn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .result-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
   .hint {
     text-align: center;
-    color: var(--ink-soft);
-    font-size: 14px;
+    color: var(--cream-soft);
+    font-size: 13.5px;
     margin-top: 18px;
     line-height: 1.5;
   }
 
   .reveal {
-    background: var(--surface);
-    border: 1.5px solid var(--line);
-    border-radius: 16px;
-    padding: 36px 28px;
+    background: var(--plaque);
+    border: 1.5px solid var(--gold-deep);
+    border-radius: 14px;
+    padding: 34px 26px;
     text-align: center;
     animation: rise 0.35s ease;
   }
   @keyframes rise {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal .for {
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    margin-bottom: 4px;
   }
   .reveal .party {
     font-family: "Fraunces", Georgia, serif;
@@ -161,7 +170,7 @@
   .reveal .table-label {
     font-size: 13px;
     letter-spacing: 0.03em;
-    color: var(--green);
+    color: var(--maroon-1);
     margin-bottom: 6px;
   }
   .reveal .table-num {
@@ -169,14 +178,14 @@
     font-weight: 600;
     font-size: 64px;
     line-height: 1;
-    color: var(--green-deep);
+    color: var(--maroon-2);
   }
   .back-btn {
     display: block;
     margin: 22px auto 0;
     background: none;
     border: none;
-    color: var(--ink-soft);
+    color: var(--cream-soft);
     font-family: "Work Sans", sans-serif;
     font-size: 14.5px;
     text-decoration: underline;
@@ -186,7 +195,7 @@
 
   .empty {
     text-align: center;
-    color: var(--ink-soft);
+    color: var(--cream-soft);
     font-size: 15px;
     padding: 18px 4px 4px;
     line-height: 1.6;
@@ -199,9 +208,9 @@
 </style>
 </head>
 <body>
-  <div class="card">
+  <div class="frame"><div class="frame-inner">
     <div id="app"></div>
-  </div>
+  </div></div>
 
 <script>
   // Party -> table data. Each party may cover multiple guests / a family.
@@ -282,7 +291,7 @@
 
   function renderSearch(query, matches) {
     let resultsHtml = "";
-    if (query.trim().length === 0) {
+    if (query.trim().length < 2) {
       resultsHtml = "";
     } else if (matches.length === 0) {
       resultsHtml = `<div class="empty">No match for "${escapeHtml(query)}". Check the spelling, or ask a member of the wedding party for help.</div>`;
@@ -293,7 +302,10 @@
     }
 
     render(`
-      <div class="mark">&#128142;</div>
+      <div class="mark">&#10052;</div>
+      <p class="welcome">Welcome to the wedding reception for</p>
+      <div class="names">Aneesha &amp; Samuel</div>
+      <div class="rule"></div>
       <h1>Find your table</h1>
       <p class="sub">Type your first name below to see where you're seated.</p>
       <div class="search-wrap">
